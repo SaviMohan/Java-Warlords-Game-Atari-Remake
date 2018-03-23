@@ -1,0 +1,391 @@
+package uoa.compsys302.project;
+
+import java.util.ArrayList;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+
+public class MultiplayerSetupController {
+	private MasterViewsController masterViewsController;
+	private Group root;
+	private Scene multiplayerSetupScene;
+	private int setupStage;
+	private int humanPlayerCount;
+	private int gameMode;
+	private int gameLevel;
+	private Text setupText;
+	
+	
+	public MultiplayerSetupController(MasterViewsController masterViewsController){
+		this.masterViewsController = masterViewsController;
+		humanPlayerCount = 2;
+		gameMode = 1;
+		gameLevel = 5;
+		setupStage = 1;
+		 
+		
+	}
+	
+	public Scene initialise(int width, int height, int setupStage) {
+		this.setupStage = setupStage;
+		switch (this.setupStage) {
+		case 1:
+			root = new Group();
+			Image img = new Image("file:src/Images/Default_screen.png");//////////////
+			
+			multiplayerSetupScene = new Scene(root, width, height, new ImagePattern(img));////////////
+			setupText = new Text(362,100,"SELECT PLAYER NUMBER");
+			setupText.setFill(Color.WHITE);
+			setupText.setFont(Font.font("Verdana", 20));
+			root.getChildren().add(setupText);
+			
+			Button twoPlayerButton = new Button();
+			twoPlayerButton.setText("2 PLAYER");
+			twoPlayerButton.setLayoutX(362);
+			twoPlayerButton.setLayoutY(200);
+			twoPlayerButton.setMinWidth(300);
+			twoPlayerButton.setMinHeight(50);
+			twoPlayerButton.setFont(Font.font("Verdana", 20));
+			twoPlayerButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	humanPlayerCount = 2;
+	            	initialise(1024,768,2);
+	            }
+	        });        
+			root.getChildren().add(twoPlayerButton);
+			
+			Button threePlayerButton = new Button();
+			threePlayerButton.setText("3 PLAYER");
+			threePlayerButton.setLayoutX(362);
+			threePlayerButton.setLayoutY(300);
+			threePlayerButton.setMinWidth(300);
+			threePlayerButton.setMinHeight(50);
+			threePlayerButton.setFont(Font.font("Verdana", 20));
+			threePlayerButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	humanPlayerCount = 3;
+	            	initialise(1024,768,2);
+	            }
+	        });        
+			root.getChildren().add(threePlayerButton);
+			
+			Button fourPlayerButton = new Button();
+			fourPlayerButton.setText("4 PLAYER");
+			fourPlayerButton.setLayoutX(362);
+			fourPlayerButton.setLayoutY(400);
+			fourPlayerButton.setMinWidth(300);
+			fourPlayerButton.setMinHeight(50);
+			fourPlayerButton.setFont(Font.font("Verdana", 20));
+			fourPlayerButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	humanPlayerCount = 4;
+	            	initialise(1024,768,2);
+	            }
+	        });        
+			root.getChildren().add(fourPlayerButton);
+			break;
+		case 2:
+			root.getChildren().clear();
+			setupText.setText("SELECT GAME MODE");
+			root.getChildren().add(setupText);
+			
+			Button normalModeButton = new Button();
+			normalModeButton.setText("NORMAL MODE");
+			normalModeButton.setLayoutX(362);
+			normalModeButton.setLayoutY(200);
+			normalModeButton.setMinWidth(300);
+			normalModeButton.setMinHeight(50);
+			normalModeButton.setFont(Font.font("Verdana", 20));
+			normalModeButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameMode = 1;
+	            	initialise(1024,768,3);
+	            }
+	        });        
+			root.getChildren().add(normalModeButton);
+			
+			Button suddenDeathButton = new Button();
+			suddenDeathButton.setText("NO WALLS MODE");
+			suddenDeathButton.setLayoutX(362);
+			suddenDeathButton.setLayoutY(300);
+			suddenDeathButton.setMinWidth(300);
+			suddenDeathButton.setMinHeight(50);
+			suddenDeathButton.setFont(Font.font("Verdana", 20));
+			suddenDeathButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameMode = 2;
+	            	initialise(1024,768,3);
+	            }
+	        });        
+			root.getChildren().add(suddenDeathButton);
+			
+			Button threeBallButton = new Button();
+			threeBallButton.setText("3 BALLS MODE");
+			threeBallButton.setLayoutX(362);
+			threeBallButton.setLayoutY(400);
+			threeBallButton.setMinWidth(300);
+			threeBallButton.setMinHeight(50);
+			threeBallButton.setFont(Font.font("Verdana", 20));
+			threeBallButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameMode = 3;
+	            	initialise(1024,768,3);
+	            }
+	        });        
+			root.getChildren().add(threeBallButton);
+			break;
+		
+		case 3:
+			root.getChildren().clear();
+			setupText.setText("SELECT GAME MAP");
+			root.getChildren().add(setupText);
+			
+			Button fireButton = new Button();
+			fireButton.setText("FIRE");
+			fireButton.setLayoutX(362);
+			fireButton.setLayoutY(200);
+			fireButton.setMinWidth(300);
+			fireButton.setMinHeight(50);
+			fireButton.setFont(Font.font("Verdana", 20));
+			fireButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameLevel = 1;
+	            	//masterViewsController.goToGameScene(masterViewsController, gameLevel, gameMode, humanPlayerCount, false);
+	            	initialise(1024,768,4);
+	            }
+	        });        
+			root.getChildren().add(fireButton);
+			
+			Button airButton = new Button();
+			airButton.setText("AIR");
+			airButton.setLayoutX(362);
+			airButton.setLayoutY(300);
+			airButton.setMinWidth(300);
+			airButton.setMinHeight(50);
+			airButton.setFont(Font.font("Verdana", 20));
+			airButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameLevel = 2;
+	            	//masterViewsController.goToGameScene(masterViewsController, gameLevel, gameMode, humanPlayerCount, false);
+	            	initialise(1024,768,4);
+	            }
+	        });        
+			root.getChildren().add(airButton);
+			
+			Button waterButton = new Button();
+			waterButton.setText("WATER");
+			waterButton.setLayoutX(362);
+			waterButton.setLayoutY(400);
+			waterButton.setMinWidth(300);
+			waterButton.setMinHeight(50);
+			waterButton.setFont(Font.font("Verdana", 20));
+			waterButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameLevel = 3;
+	            	//masterViewsController.goToGameScene(masterViewsController, gameLevel, gameMode, humanPlayerCount, false);
+	            	initialise(1024,768,4);
+	            }
+	        });        
+			root.getChildren().add(waterButton);
+			
+			Button earthButton = new Button();
+			earthButton.setText("EARTH");
+			earthButton.setLayoutX(362);
+			earthButton.setLayoutY(500);
+			earthButton.setMinWidth(300);
+			earthButton.setMinHeight(50);
+			earthButton.setFont(Font.font("Verdana", 20));
+			earthButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameLevel = 4;
+	            	//masterViewsController.goToGameScene(masterViewsController, gameLevel, gameMode, humanPlayerCount, false);
+	            	initialise(1024,768,4);
+	            }
+	        });        
+			root.getChildren().add(earthButton);
+			
+			Button aetherButton = new Button();
+			aetherButton.setText("AETHER");
+			aetherButton.setLayoutX(362);
+			aetherButton.setLayoutY(600);
+			aetherButton.setMinWidth(300);
+			aetherButton.setMinHeight(50);
+			aetherButton.setFont(Font.font("Verdana", 20));
+			aetherButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	gameLevel = 5;
+	            	//masterViewsController.goToGameScene(masterViewsController, gameLevel, gameMode, humanPlayerCount, false);
+	            	initialise(1024,768,4);
+	            }
+	        });        
+			root.getChildren().add(aetherButton);
+			
+			break;
+		case 4:
+			root.getChildren().clear();
+			setupText.setText("ENTER NAMES FOR PLAYERS (MAX 6 Characters)\n\nUse TAB to switch between textfields");
+			root.getChildren().add(setupText);
+			
+			final TextField player1Name = new TextField();
+			player1Name.setPromptText("Player 1");
+			player1Name.setPrefColumnCount(10);
+			player1Name.setFont(new Font("Verdana",20));
+			player1Name.setLayoutX(362);
+			player1Name.setLayoutY(200);
+			root.getChildren().add(player1Name);
+			
+			final TextField player2Name = new TextField();
+			player2Name.setPromptText("Player 2");
+			player2Name.setPrefColumnCount(10);
+			player1Name.setFont(new Font("Verdana",20));
+			player2Name.setLayoutX(362);
+			player2Name.setLayoutY(300);
+			root.getChildren().add(player2Name);
+			
+			final TextField player3Name = new TextField();
+			player3Name.setPromptText("Player 3");
+			player3Name.setPrefColumnCount(10);
+			player3Name.setFont(new Font("Verdana",20));
+			player3Name.setLayoutX(362);
+			player3Name.setLayoutY(400);
+			root.getChildren().add(player3Name);
+			
+			final TextField player4Name = new TextField();
+			player4Name.setPromptText("Player 4");
+			player4Name.setPrefColumnCount(10);
+			player4Name.setFont(new Font("Verdana",20));
+			player4Name.setLayoutX(362);
+			player4Name.setLayoutY(500);
+			root.getChildren().add(player4Name);
+			
+			Button startButton = new Button();
+			startButton.setText("START");
+			startButton.setTextFill(Color.BLUE);
+			startButton.setLayoutX(362);
+			startButton.setLayoutY(600);
+			startButton.setMinWidth(300);
+			startButton.setMinHeight(50);
+			startButton.setFont(Font.font("Verdana", 20));
+			startButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	//Arraylist of Strings
+	            	ArrayList<String>playerNames=new ArrayList<String>();
+	            	if ((player1Name.getText() != null && !player1Name.getText().isEmpty())) {
+	            		playerNames.add(player1Name.getText().substring(0,6));
+	                } else {
+	                	playerNames.add("Player 1");
+	                }
+	            	if ((player2Name.getText() != null && !player2Name.getText().isEmpty())) {
+	            		playerNames.add(player2Name.getText().substring(0,6));
+	                } else {
+	                	playerNames.add("Player 2");
+	                }
+	            	if ((player3Name.getText() != null && !player3Name.getText().isEmpty())) {
+	            		playerNames.add(player3Name.getText().substring(0,6));
+	                } else {
+	                	playerNames.add("Player 3");
+	                }
+	            	if ((player4Name.getText() != null && !player4Name.getText().isEmpty())) {
+	            		playerNames.add(player4Name.getText().substring(0,6));
+	                } else {
+	                	playerNames.add("Player 4");
+	                }
+	            	masterViewsController.goToGameScene(masterViewsController, gameLevel, gameMode, humanPlayerCount, false, playerNames);
+	            	
+	            }
+	        });        
+			root.getChildren().add(startButton);
+			multiplayerSetupScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			    @Override
+			    public void handle(KeyEvent ke) {
+			        if (ke.getCode() == KeyCode.ENTER) {
+			        	ArrayList<String>playerNames=new ArrayList<String>();
+		            	if ((player1Name.getText() != null && !player1Name.getText().isEmpty())) {
+		            		playerNames.add(player1Name.getText());
+		                } else {
+		                	playerNames.add("Player 1");
+		                }
+		            	if ((player2Name.getText() != null && !player2Name.getText().isEmpty())) {
+		            		playerNames.add(player2Name.getText());
+		                } else {
+		                	playerNames.add("Player 2");
+		                }
+		            	if ((player3Name.getText() != null && !player3Name.getText().isEmpty())) {
+		            		playerNames.add(player3Name.getText());
+		                } else {
+		                	playerNames.add("Player 3");
+		                }
+		            	if ((player4Name.getText() != null && !player4Name.getText().isEmpty())) {
+		            		playerNames.add(player4Name.getText());
+		                } else {
+		                	playerNames.add("Player 4");
+		                }
+		            	masterViewsController.goToGameScene(masterViewsController, gameLevel, gameMode, humanPlayerCount, false, playerNames);
+			    				        	
+			        } 
+			    }
+			});
+			
+			
+			break;
+		default:
+			break;
+		}	
+		
+		/**
+		Button progressButton = new Button();
+		progressButton.setText("START");
+		if(level == 6){
+			progressButton.setText("FINISH");
+		}
+		progressButton.setLayoutX(362);
+		progressButton.setLayoutY(480);
+		progressButton.setMinWidth(300);
+		progressButton.setMinHeight(50);
+		progressButton.setFont(Font.font("Verdana", 20));
+		if(level == 6){
+			progressButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	masterViewsController.goToMainMenu(masterViewsController);
+	            }
+	        });
+		} else {
+			progressButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	masterViewsController.goToGameScene(masterViewsController, level,1,1,true);
+	            }
+	        });
+		}
+		
+        
+        root.getChildren().add(progressButton);
+		*/
+		
+		return multiplayerSetupScene;
+	}
+}

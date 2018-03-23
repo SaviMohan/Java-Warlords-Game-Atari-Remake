@@ -1,0 +1,81 @@
+package uoa.compsys302.project.model;
+
+import javafx.beans.property.IntegerProperty;
+
+public class Ball {
+	private IntegerProperty xPos;
+	private IntegerProperty yPos;
+	private IntegerProperty xVelocity;
+	private IntegerProperty yVelocity;
+	
+	/**
+     * Default constructor.
+     */
+    public Ball() {
+    	this.xPos.set(0);
+    	this.yPos.set(0);
+    	this.xVelocity.set(0);
+    	this.yVelocity.set(0);
+    }
+	
+	/***
+     *  Set the horizontal position of the ball to the given value.
+     * @param x
+     */
+    public void setXPos(int x){
+    	this.xPos.set(x);
+    }
+
+    /***
+     * Set the vertical position of the ball to the given value.
+     * @param y
+     */
+    public void setYPos(int y){
+    	this.yPos.set(y);
+    }
+
+    /***
+     * @return the horizontal position of the ball.
+     */
+    public int getXPos(){
+    	return xPos.get();
+    }
+
+    /***
+     * @return the vertical position of the ball.
+     */
+    public int getYPos(){
+    	return yPos.get();
+    }
+
+    /***
+     *  Set the horizontal velocity of the ball to the given value.
+     * @param dX
+     */
+    public void setXVelocity(int dX){
+    	this.xVelocity.set(dX);
+    }
+
+    /***
+     *  Set the vertical velocity of the ball to the given value.
+     * @param dY
+     */
+    public void setYVelocity(int dY){
+    	this.yVelocity.set(dY);
+    }
+
+    /***
+     * @return the horizontal velocity of the ball.
+     */
+    public int getXVelocity(){
+    	return xVelocity.get();
+    }
+
+    /***
+     * @return the vertical velocity of the ball.
+     */
+    public int getYVelocity(){
+    	return yVelocity.get();
+    }
+
+}

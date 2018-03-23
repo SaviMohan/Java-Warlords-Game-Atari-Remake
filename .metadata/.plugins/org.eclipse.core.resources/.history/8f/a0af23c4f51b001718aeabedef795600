@@ -1,0 +1,30 @@
+package uoa.compsys302.project.model;
+
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+
+public class Iceberg {
+	private Rectangle bounds;
+	private int yVelocity=0;
+	
+	/**
+     * overridden constructor that takes in the coordinates and y-velocity of the Iceberg
+     * @param xPos
+     * @param yPos
+     */
+    public Iceberg(int xPos, int yPos, int yVelocity){
+		
+    	bounds = new Rectangle(xPos,yPos,50,30);
+    	Image img = new Image("file:src/Images/iceberg.png");
+		bounds.setFill(new ImagePattern(img));
+    	this.yVelocity = yVelocity;
+	}
+    
+    /***
+     * @return the bounds of the Iceberg.
+     */
+    public Rectangle getBounds(){
+    	return bounds;
+    }
+}

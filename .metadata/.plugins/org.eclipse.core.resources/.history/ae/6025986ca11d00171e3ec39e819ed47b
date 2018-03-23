@@ -1,0 +1,49 @@
+package uoa.compsys302.project;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.Font;
+
+public class LevelsProgressController {
+	private MasterViewsController masterViewsController;
+	private Group root;
+	private Scene levelsProgressScene;
+	private int level;
+	
+	public LevelsProgressController(MasterViewsController masterViewsController,int level){
+		this.masterViewsController = masterViewsController;
+		this.level = level;
+	}
+	
+	public Scene initialise(int width, int height) {
+		root = new Group();
+		Image img = new Image("file:src/Images/Default_screen.png");//////////////
+		
+		levelsProgressScene = new Scene(root, width, height, new ImagePattern(img));////////////
+		
+		Button progressButton = new Button();
+		progressButton.setText("START");
+		progressButton.setLayoutX(362);
+		progressButton.setLayoutY(680);
+		progressButton.setMinWidth(300);
+		progressButton.setMinHeight(50);
+		progressButton.setFont(Font.font("Verdana", 20));
+		
+		progressButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	masterViewsController.goToGameScene(masterViewsController, level,1,1);
+            }
+        });
+        
+        root.getChildren().add(progressButton);
+		
+		return levelsProgressScene;
+	}
+
+}

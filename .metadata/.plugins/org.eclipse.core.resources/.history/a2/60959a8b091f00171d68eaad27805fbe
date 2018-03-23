@@ -1,0 +1,54 @@
+package uoa.compsys302.project;
+
+import java.nio.file.Paths;
+
+import javafx.application.Application;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+/**
+ * The game is started by initialising the MasterViewsController class which
+ * will control the displaying and switching of views
+ * @author Savi Mohan, Ira Syamira
+ */
+public class MainApp extends Application {
+	//private Stage primaryStage;
+	
+	@Override
+	public void start(Stage primaryStage) {
+		//this.primaryStage = primaryStage;
+		//this.primaryStage.setTitle("Out Of Your Element"); //the name of the game
+		primaryStage.setTitle("Out Of Your Element"); //the name of the game
+		
+		MasterViewsController masterViewsController = new MasterViewsController(primaryStage);
+		//masterViewsController.goToGameScene(masterViewsController,1,1,1);
+		masterViewsController.goToMainMenu(masterViewsController);
+		music();
+	}
+	MediaPlayer mediaPlayer;
+	public void music(){
+	    String bip = "src/Sounds/EpicMusic_lowVol.mp3";
+	    Media hit = new Media(Paths.get(bip).toUri().toString());
+	    mediaPlayer = new MediaPlayer(hit);
+	    mediaPlayer.play();
+		
+		 
+	}
+	
+	/**
+	 * Returns the main stage.
+	 * @return
+	 */
+	//public Stage getPrimaryStage(){
+		//return primaryStage;
+	//}
+
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+
+}

@@ -1,0 +1,76 @@
+package uoa.compsys302.project.model;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.property.IntegerProperty;
+
+
+
+public class Player {
+	private StringProperty playerName;
+	private IntegerProperty xPos;
+	private IntegerProperty yPos;
+	
+	
+	/**
+     * Default constructor.
+     */
+    public Player() {
+        //this(null);
+    	this.xPos.set(0);
+    	this.yPos.set(0);
+    }
+
+    /**
+     * Constructor with some initial data.
+     *
+     * @param playerName
+     */
+    public Player(String playerName) {
+        this.playerName = new SimpleStringProperty(playerName); 
+    }
+    
+    public String getPlayerName() {
+        return playerName.get();
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName.set(playerName);
+    }
+	
+	
+	/***
+     *  Set the horizontal position of the player to the given value.
+     * @param x
+     */
+    public void setXPos(int x){
+    	this.xPos.set(x);
+    }
+
+    /***
+     *  Set the vertical position of the player to the given value.
+     * @param y
+     */
+    public void setYPos(int y){
+    	this.yPos.set(y);
+    }
+
+    /***
+     * Determine if this player has been killed.
+     *
+     * @return true if the ball has collided with this player. Otherwise, return false.
+     */
+    public boolean isDead(){
+    	return true;
+    }
+
+    /***
+     * Determine if this player is the winner of the game. Results need only be valid before the start and after the end of a game tick.
+     *
+     * @return true if all other players are dead, or if time has run out and this player has the highest number of intact walls. Otherwise, return false.
+     */
+    public boolean hasWon(){
+    	return true;
+    }
+
+}

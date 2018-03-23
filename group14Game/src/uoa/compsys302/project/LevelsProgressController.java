@@ -1,0 +1,135 @@
+package uoa.compsys302.project;
+
+import java.util.ArrayList;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+/**
+ * This is the class that initialises the scenes inbetween levels in the single player mode
+ * @author Ira Syamira,Savi Mohan
+ *
+ */
+public class LevelsProgressController {
+	private MasterViewsController masterViewsController;
+	private Group root;
+	private Scene levelsProgressScene;
+	private int level;
+	ArrayList<String> playerNames;
+	/**
+	 * Constructor for the LevelsProgressController class
+	 * @param masterViewsController Takes in an instance of MasterViewsController so that the LevelsProgressController can switch scenes
+	 * @param level Which level of the single player mode this class needs to create a scene for
+	 */
+	public LevelsProgressController(MasterViewsController masterViewsController,int level){
+		this.masterViewsController = masterViewsController;
+		this.level = level;
+		playerNames = new ArrayList<String>();
+		playerNames.add("PLAYER");
+		playerNames.add("ENEMY");
+		playerNames.add("ENEMY");
+		playerNames.add("ENEMY");
+	}
+	/**
+	 * Instantiates images containing story information and a progress button and adds them to a root node, then returns a scene container
+	 * that is made from the root node.
+	 * @param width
+	 * @param height
+	 * @return the levelsProgressScene that contains the relevant story information and progress button
+	 */
+	public Scene initialise(int width, int height) {
+		root = new Group();
+		
+		
+		levelsProgressScene = new Scene(root, width, height);
+		
+		//depending on the level, set the fill of the scene to the relevant story image
+		switch (level) {
+		case 1:
+			levelsProgressScene.setFill(new ImagePattern(new Image("file:src/Images/background_screen.png")));	
+			break;
+		case 2:
+			levelsProgressScene.setFill(new ImagePattern(new Image("file:src/Images/level1_screen.png")));		
+			break;		
+		case 3:
+			levelsProgressScene.setFill(new ImagePattern(new Image("file:src/Images/level2_screen.png")));		
+			break;
+		case 4:
+			levelsProgressScene.setFill(new ImagePattern(new Image("file:src/Images/level3_screen.png")));		
+			break;
+		case 5:
+			levelsProgressScene.setFill(new ImagePattern(new Image("file:src/Images/level4_screen.png")));
+			break;	
+		case 6:
+			levelsProgressScene.setFill(new ImagePattern(new Image("file:src/Images/final_screen.png")));
+			break;		
+		default:
+			break;
+		}	
+		
+		// creates progress button 
+		Button progressButton = new Button();
+		progressButton.setText("START");
+		if(level == 6){
+			progressButton.setText("FINISH");
+		}
+		progressButton.setLayoutX(362);
+		progressButton.setLayoutY(480);
+		progressButton.setMinWidth(300);
+		progressButton.setMinHeight(50);
+		progressButton.setFont(Font.font("Verdana", 20));
+		progressButton.setTextFill(Color.BLUE);
+		if(level == 6){//if this method is called after the final level, the progress button takes the user back to the main menu, otherwise it takes them to the next level
+			progressButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	masterViewsController.goToMainMenu(masterViewsController);
+	            }
+	        });
+			//the button's functionality can also be accessed by pressing the enter key
+			levelsProgressScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			    @Override
+			    public void handle(KeyEvent ke) {
+			        if (ke.getCode() == KeyCode.ENTER) {
+			        	masterViewsController.goToMainMenu(masterViewsController);
+			        } 
+			    }
+			});
+		} else {
+			progressButton.setOnAction(new EventHandler<ActionEvent>() {
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	
+	            	
+	            	masterViewsController.goToGameScene(masterViewsController, level,1,1,true, playerNames);
+	            }
+	        });
+			levelsProgressScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			    @Override
+			    public void handle(KeyEvent ke) {
+			        if (ke.getCode() == KeyCode.ENTER) {
+			        	masterViewsController.goToGameScene(masterViewsController, level,1,1,true, playerNames);
+			        } 
+			    }
+			});
+		}
+		       
+        root.getChildren().add(progressButton);
+        Text instructionText = new Text(362,550,"Press Enter to continue...");
+        instructionText.setFont(Font.font("Verdana", 15));
+        instructionText.setFill(Color.WHITE);
+        root.getChildren().add(instructionText);
+		
+		return levelsProgressScene;
+	}
+
+}

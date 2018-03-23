@@ -1,0 +1,63 @@
+package uoa.compsys302.project.model;
+
+public class FieldSpell {
+	private int xPos;
+	private int yPos;
+	private int type;
+	
+	FieldSpell(int xPos, int yPos, int type){
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.type = type;
+		switch (type) {
+		case 1:
+			if(paddleList.get(0).getRotate()>-45){
+				paddleList.get(0).setMoveLeft(true);
+			}				
+			break;
+		case W:
+			if(paddleList.get(0).getRotate()<45){//only move the paddle if its within the bounds of the game
+				paddleList.get(0).setMoveRight(true);
+			}				
+			break;
+		
+		case LEFT:
+			if(paddleList.get(2).getRotate()>-45){
+				paddleList.get(2).setMoveLeft(true);
+			}				
+			break;
+		case RIGHT:
+			if(paddleList.get(2).getRotate()<45){
+				paddleList.get(2).setMoveRight(true);
+			}				
+			break;
+		case I:
+			if(paddleList.get(3).getRotate()>-45){
+				paddleList.get(3).setMoveLeft(true);
+			}				
+			break;
+		case O:
+			if(paddleList.get(3).getRotate()<45){
+				paddleList.get(3).setMoveRight(true);
+			}				
+			break;	
+		
+		default:
+			break;
+	}
+	
+	/**
+	 * 
+	 * @return the type of field spell this object is
+	 */
+	public int getType(){
+		return this.type;
+	}
+	
+	public void setType(int type){
+		this.type = type;
+	}
+	
+	
+
+}

@@ -1,0 +1,147 @@
+package uoa.compsys302.project.model;
+
+
+import warlordstest.IPaddle;
+
+import javafx.scene.shape.Rectangle;
+
+
+/**
+ * This is the model class which contains the data relevant to a paddle in the game, as well
+ * as getter and setter methods which allow this data to be accessed and modified.
+ * @author Savi Mohan, Ira Syamira
+ */
+public class Paddle implements IPaddle{
+	private int xPos;
+	private int yPos;	
+	private Rectangle bounds;
+	private int rotate; //this variable is used to keep track of the rotation angle of this paddle
+	//public int actualRotate=0;
+	
+	//These boolean variables are used by the GameController class to determine whether this paddle needs to be moved 
+	private boolean moveRight = false;
+	private boolean moveLeft = false;
+	
+	/**
+	 * Constructor for the Paddle class
+	 */
+	public Paddle(){
+		xPos=0;
+    	yPos=0;
+    	bounds = new Rectangle(0,0,5,5);
+    	rotate = 0;
+    	
+	}
+	/**
+	 * Overridden constructor for the Paddle class, that takes in the size of the paddle 
+	 */
+	public Paddle(int width, int height){
+		xPos=0;
+    	yPos=0;
+    	bounds = new Rectangle(100,100,width,height);
+    	bounds.setArcHeight(30);
+		bounds.setArcWidth(8);
+    	//rotate = new Rotate(30, 0, 0);
+    	
+    	//bounds.getTransforms().add(new Rotate(0,25,5));//, 25, 5));
+    	//rotate = new Rotate(135, bounds.getX()+bounds.getWidth()/2.,bounds.getY()+bounds.getHeight()/2.); 
+		//bounds.getTransforms().add(rotate);
+    	
+		//bounds.getTransforms().add(new Rotate(45,25,5));
+		
+		
+    	//bounds.getTransforms().add(rotate);		
+    	
+	}
+	
+	/***
+     *  Set the horizontal position of the paddle to the given value.
+     * @param x
+     */
+    public void setXPos(int x){
+    	xPos = x;
+    	bounds.setX(x);////////////
+    }
+
+    /***
+     *  Set the vertical position of the paddle to the given value.
+     * @param y
+     */
+    public void setYPos(int y){
+    	yPos = y;
+    	bounds.setY(y);////////////
+    }
+    
+    /***
+     *  get the horizontal position of the paddle.
+     * 
+     */
+    public int getXPos(){
+    	return xPos;
+    }
+
+    /***
+     *  get the vertical position of the paddle.
+     * 
+     */
+    public int getYPos(){
+    	return yPos;
+    }
+    
+    /***
+     * @return the bounds of the paddle.
+     */
+    public Rectangle getBounds(){
+    	return bounds;
+    }
+    
+    /***
+     *  Sets whether the paddle needs to move right
+     *  @param moveRight
+     */
+    public void setMoveRight(boolean moveRight){
+    	this.moveRight = moveRight;
+    }
+    
+    /***
+     * returns whether the paddle needs to move right
+     * @return moveRight
+     */
+    public boolean getMoveRight(){
+    	return moveRight;
+    }
+    
+    /***
+     *  Sets whether the paddle needs to move right
+     *  @param moveLeft
+     */
+    public void setMoveLeft(boolean moveLeft){
+    	this.moveLeft = moveLeft;
+    }
+    
+    /***
+     * returns whether the paddle needs to move left
+     * @return moveLeft
+     */
+    public boolean getMoveLeft(){
+    	return moveLeft;
+    }
+    
+    /***
+     *  Sets the rotation angle of this paddle
+     *  @param rotate
+     */
+    public void setRotate(int rotate){
+    	this.rotate = rotate;
+    	//this.actualRotate=rotate+45;
+    }
+    
+    /***
+     * returns the rotation angle of the paddle
+     * @return rotate
+     */
+    public int getRotate(){
+    	return this.rotate;
+    }
+
+}

@@ -1,0 +1,157 @@
+package uoa.compsys302.project.model;
+
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
+import warlordstest.IWarlord;
+
+
+/**
+ * This is the model class which contains the data relevant to a player in the game, as well
+ * as getter and setter methods which allow this data to be accessed and modified.
+ * @author Savi Mohan, Ira Syamira
+ */
+
+public class Player implements IWarlord{
+	private String playerName;
+	private int xPos;
+	private int yPos;
+	private Circle bounds;
+	private boolean winner;
+	private boolean dead;
+	private boolean isHuman;
+	
+	
+	/**
+     * Default constructor.
+     */
+    public Player() {
+        
+    	xPos = 0;
+    	yPos = 0;
+    	bounds = new Circle(0,0,5);
+    	winner = false;
+    	dead = false;
+    	isHuman = true;
+    }
+    /**
+     * overridden constructor that takes in the coordinates of the player's base
+     * @param xPos
+     * @param yPos
+     */
+    public Player(int xPos, int yPos) {
+        
+    	this.xPos = xPos;
+    	this.yPos = yPos;
+    	bounds = new Circle(xPos,yPos,15);
+    	winner = false;
+    	dead = false;
+    	isHuman = true;
+    }
+
+    
+    /**
+     * 
+     * @return the player's name
+     */
+    public String getPlayerName() {
+        return playerName;
+    }
+    /**
+     * sets the player's name
+     * @param playerName
+     */
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+	
+    /***
+     * @return the bounds of the player base.
+     */
+    public Shape getBounds(){
+    	return bounds;
+    }
+	
+	/***
+     *  Set the horizontal position of the player to the given value.
+     * @param x
+     */
+    public void setXPos(int x){
+    	xPos = x;
+    	bounds.setCenterX(x);
+    }
+
+    /***
+     * Set the vertical position of the player to the given value.
+     * @param y
+     */
+    public void setYPos(int y){
+    	yPos = y;
+    	bounds.setCenterY(y);
+    }
+    
+    /***
+     *  get the horizontal position of the player.
+     * 
+     */
+    public int getXPos(){
+    	return xPos;
+    }
+
+    /***
+     *  get the vertical position of the player.
+     * 
+     */
+    public int getYPos(){
+    	return yPos;
+    }
+
+    /***
+     * Determine if this player has been killed.
+     *
+     * @return true if the ball has collided with this player. Otherwise, return false.
+     */
+    public boolean isDead(){
+    	return dead;
+    }
+    
+    /***
+     * sets the player status to dead
+     *
+     * 
+     */
+    public void kill(){
+    	this.dead = true;
+    }
+
+    /***
+     * Determine if this player is the winner of the game. Results are valid before the start and after the end of a game tick.
+     *
+     * @return true if all other players are dead, or if time has run out and this player has the highest number of intact walls. Otherwise, return false.
+     */
+    public boolean hasWon(){
+    	return winner;
+    }
+    
+    /***
+     * sets the player status to winner
+     */
+    public void makeWinner(){
+    	this.winner = true;
+    }
+    
+    /***
+     * Sets whether the player is a human or not.
+     * @param isHuman
+     */
+    public void setIsHuman(boolean isHuman){
+    	this.isHuman = isHuman;
+    }
+    
+    /***
+     *  
+     * 	@return true if the player is human, false if the player is computer controlled
+     */
+    public boolean getIsHuman(){
+    	return isHuman;
+    }
+}

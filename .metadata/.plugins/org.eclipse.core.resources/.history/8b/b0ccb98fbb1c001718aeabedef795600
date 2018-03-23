@@ -1,0 +1,32 @@
+package uoa.compsys302.project.model;
+
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+
+public class Volcano {
+	private Circle bounds;
+	private ggg;
+	
+	/**
+     * overridden constructor that takes in the coordinates of the Volcano
+     * @param xPos
+     * @param yPos
+     */
+    public Volcano(int xPos, int yPos){
+		
+    	//bounds = new Rectangle(xPos,yPos,30,30);
+    	bounds = new Circle(xPos,yPos,50);
+    	Image img = new Image("file:src/Images/oie_transparent.png");
+		bounds.setFill(new ImagePattern(img));
+    	
+	}
+    
+    /***
+     * @return the bounds of the Volcano.
+     */
+    public Circle getBounds(){
+    	return bounds;
+    }
+}

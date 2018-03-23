@@ -1,0 +1,176 @@
+package uoa.compsys302.project.model;
+
+
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+import warlordstest.IBall;
+
+/**
+ * This is the model class which contains the data relevant to a ball in the game, as well
+ * as getter and setter methods which allow this data to be accessed and modified.
+ * @author Savi Mohan, Ira Syamira
+ */
+public class Ball implements IBall {
+	private int xPos;
+	private int yPos;
+	private int xVelocity;
+	private int yVelocity;
+	private int iterationsSinceLastCollision; // this variable is meant to negate the possibility of a double reflection when colliding with a paddle or other moving object
+	private Circle bounds;
+	private boolean collidedWithTornado;
+	private boolean isFireBall;
+	
+	/**
+     * Default constructor.
+     */
+    public Ball() {
+    	
+    	xPos = 0;
+    	yPos = 0;
+    	xVelocity = 0;
+    	yVelocity = 0;
+    	bounds = new Circle(0,0,5);
+    	iterationsSinceLastCollision=0;
+    	collidedWithTornado = false;
+    	isFireBall = false;
+    	bounds.setStroke(Color.WHITE);
+    }
+    /**
+     * overridden constructor that takes in the coordinate of the ball
+     * @param xPos
+     * @param yPos
+     */
+    public Ball(int xPos, int yPos){
+		this.xPos=xPos;
+    	this.yPos=yPos;
+    	bounds = new Circle(0,0,6);
+    	xVelocity = 0;
+    	yVelocity = 0;
+    	iterationsSinceLastCollision=0;
+    	collidedWithTornado = false;
+    	isFireBall = false;
+    	bounds.setStroke(Color.WHITE);
+	}
+	
+	/***
+     *  Set the horizontal position of the ball to the given value.
+     * @param x
+     */
+    public void setXPos(int x){
+    	
+    	xPos = x;
+    	bounds.setCenterX(x);
+    }
+
+    /***
+     * Set the vertical position of the ball to the given value.
+     * @param y
+     */
+    public void setYPos(int y){
+    	
+    	yPos = y;
+    	bounds.setCenterY(y);
+    }
+    
+    /***
+     * @return the bounds of the ball.
+     */
+    public Circle getBounds(){
+    	return bounds;
+    }
+
+    /***
+     * @return the horizontal position of the ball.
+     */
+    public int getXPos(){
+    	
+    	return xPos;
+    }
+
+    /***
+     * @return the vertical position of the ball.
+     */
+    public int getYPos(){
+    	return yPos;
+    }
+
+    /***
+     * Set the horizontal velocity of the ball to the given value.
+     * @param dX
+     */
+    public void setXVelocity(int dX){
+    	xVelocity = dX;
+    }
+
+    /***
+     *  Set the vertical velocity of the ball to the given value.
+     * @param dY
+     */
+    public void setYVelocity(int dY){
+    	yVelocity = dY;
+    }
+
+    /***
+     * @return the horizontal velocity of the ball.
+     */
+    public int getXVelocity(){
+    	return xVelocity;
+    }
+
+    /***
+     * @return the vertical velocity of the ball.
+     */
+    public int getYVelocity(){
+    	return yVelocity ;
+    }
+    
+    /***
+     * Set the value of the iterationsSinceLastCollision variable.
+     * This variable will ensure that a double reflection will not occur if the ball collides with another moving object
+     * @param iterations
+     */
+    public void setIterationsSinceLastCollision(int iterations){
+    	this.iterationsSinceLastCollision = iterations;
+    }
+
+    /***
+     * @return the value of the iterationsSinceLastCollision variable
+     */
+    public int getIterationsSinceLastCollision(){
+    	return iterationsSinceLastCollision;
+    }
+    
+    /***
+     * Sets whether this ball has collided with a tornado on a previous tick.
+     * This variable will ensure that the ball does not get stuck inside a tornado object
+     * @param collided
+     */
+    public void setCollidedWithTornado(boolean collided){
+    	this.collidedWithTornado = collided;
+    }
+
+    /***
+     * @return true if the ball collided with a tornado on the previous tick, false otherwise
+     */
+    public boolean getCollidedWithTornado(){
+    	return this.collidedWithTornado;
+    }
+    
+    /***
+     * Sets whether this ball is a fire ball emitted from the volcano object.
+     * This is so that we know to destroy the fire ball when it hits a paddle, wall, or player. 
+     * @param collided
+     */
+    public void setIsFireBall(boolean isFireBall){
+    	this.isFireBall = isFireBall;
+    }
+
+    /***
+     * @return true if the ball is a fire ball emitted from the volcano object, false otherwise
+     */
+    public boolean getIsFireBall(){
+    	return this.isFireBall;
+    }
+
+}

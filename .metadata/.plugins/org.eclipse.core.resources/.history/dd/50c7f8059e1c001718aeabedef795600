@@ -1,0 +1,30 @@
+package uoa.compsys302.project.model;
+
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
+
+public class Tornado {
+	private Rectangle bounds;
+	
+	/**
+     * overridden constructor that takes in the coordinate of the Tornado
+     * @param xPos
+     * @param yPos
+     */
+    public Tornado(int xPos, int yPos){
+		
+    	bounds = new Rectangle(xPos,yPos,45,45);
+    	Image img = new Image("file:src/Images/tornado.png");
+		bounds.setFill(new ImagePattern(img));
+    	//bounds.setFill(Color.RED);
+	}
+    
+    /***
+     * @return the bounds of the Tornado.
+     */
+    public Rectangle getBounds(){
+    	return bounds;
+    }
+}

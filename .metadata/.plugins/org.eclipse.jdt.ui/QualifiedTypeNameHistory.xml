@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="uoa.compsys302.project.model.Game"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.model.Ball"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.model.Paddle"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.model.Wall"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.model.Player"/>
+<fullyQualifiedTypeName name="javafx.scene.canvas.Canvas"/>
+<fullyQualifiedTypeName name="javafx.scene.canvas.GraphicsContext"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.GameController"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.view.GameView"/>
+<fullyQualifiedTypeName name="javafx.scene.transform.Rotate"/>
+<fullyQualifiedTypeName name="javafx.scene.transform.Affine"/>
+<fullyQualifiedTypeName name="com.sun.javafx.geom.Area"/>
+<fullyQualifiedTypeName name="javafx.scene.shape.Arc"/>
+<fullyQualifiedTypeName name="javafx.scene.image.Image"/>
+<fullyQualifiedTypeName name="javafx.scene.paint.ImagePattern"/>
+<fullyQualifiedTypeName name="javafx.scene.input.KeyEvent"/>
+<fullyQualifiedTypeName name="javafx.scene.text.Text"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="javafx.scene.shape.Rectangle"/>
+<fullyQualifiedTypeName name="javafx.scene.shape.Shape"/>
+<fullyQualifiedTypeName name="java.awt.Shape"/>
+<fullyQualifiedTypeName name="javafx.scene.shape.Circle"/>
+<fullyQualifiedTypeName name="javafx.scene.Group"/>
+<fullyQualifiedTypeName name="javafx.event.EventHandler"/>
+<fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Button"/>
+<fullyQualifiedTypeName name="javafx.scene.text.Font"/>
+<fullyQualifiedTypeName name="javafx.application.Platform"/>
+<fullyQualifiedTypeName name="javafx.animation.Animation"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.Border"/>
+<fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javafx.util.Duration"/>
+<fullyQualifiedTypeName name="javafx.scene.paint.Color"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.view.InformationScreenView"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.view.MultiplayerExitScreenView"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.view.LevelsProgressView"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.view.MultiplayerSetupView"/>
+<fullyQualifiedTypeName name="javafx.stage.Stage"/>
+<fullyQualifiedTypeName name="javafx.scene.Scene"/>
+<fullyQualifiedTypeName name="uoa.compsys302.project.view.MainMenuView"/>
+</qualifiedTypeNameHistroy>

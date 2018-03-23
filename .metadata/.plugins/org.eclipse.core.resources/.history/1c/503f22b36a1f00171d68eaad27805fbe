@@ -1,0 +1,10 @@
+package uoa.compsys302.project.view;
+
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class MultiplayerExitScreenView {
+	public MultiplayerExitScreenView(Scene multiplayerExitScreenScene,Stage stage){
+		stage.setScene(multiplayerExitScreenScene);
+	}
+}

@@ -1,0 +1,31 @@
+package uoa.compsys302.project.model;
+
+import javafx.beans.property.IntegerProperty;
+
+public class Paddle {
+	private IntegerProperty xPos;
+	private IntegerProperty yPos;
+	
+	public Paddle(){
+		this.xPos.set(0);
+    	this.yPos.set(0);
+    	
+	}
+	
+	/***
+     *  Set the horizontal position of the paddle to the given value.
+     * @param x
+     */
+    public void setXPos(int x){
+    	this.xPos.set(x);
+    }
+
+    /***
+     *  Set the vertical position of the paddle to the given value.
+     * @param y
+     */
+    public void setYPos(int y){
+    	this.yPos.set(y);
+    }
+
+}

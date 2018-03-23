@@ -1,0 +1,83 @@
+package uoa.compsys302.project.model;
+
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import warlordstest.IWall;
+
+/**
+ * This is the model class which contains the data relevant to a wall in the game, as well
+ * as getter and setter methods which allow this data to be accessed and modified.
+ * @author Savi Mohan, Ira Syamira
+ */
+public class Wall implements IWall {
+	private int xPos;
+	private int yPos;
+	private Rectangle bounds;
+	private boolean wallDestroyed;
+	
+	/**
+	 * constructor for the wall class
+	 */
+	public Wall(){
+		xPos = 0;
+		yPos = 0;
+    	bounds = new Rectangle(0,0,15,15);
+    	wallDestroyed = false;
+    	bounds.setFill(Color.BEIGE);
+	}
+	
+	public Wall(int xPos,int yPos){
+		this.xPos = xPos;
+		this.yPos = yPos;
+    	bounds = new Rectangle(xPos,yPos,15,15);
+    	wallDestroyed = false;
+    	bounds.setFill(Color.BEIGE);
+    	bounds.setArcHeight(7);
+		bounds.setArcWidth(7);
+	}
+	
+	/***
+     *  Set the horizontal position of the wall to the given value.
+     * @param x
+     */
+    public void setXPos(int x){
+    	xPos = x;
+    	bounds.setX(x);
+    }
+
+    /***
+     *  Set the vertical position of the wall to the given value.
+     * @param y
+     */
+    public void setYPos(int y){
+    	yPos = y;
+    	bounds.setY(y);
+    }
+
+    /***
+     * Determine if this wall has been destroyed.
+     *
+     * @return true if the ball has collided with this wall. Otherwise, return false.
+     */
+    public boolean isDestroyed(){
+    	return wallDestroyed;
+    }
+    
+    /***
+     * sets wall status to destroyed
+     *
+     * 
+     */
+    public void destroyWall(){
+    	this.wallDestroyed = true;
+    }
+    
+    /***
+     * @return the bounds of the wall.
+     */
+    public Shape getBounds(){
+    	return bounds;
+    }
+
+}

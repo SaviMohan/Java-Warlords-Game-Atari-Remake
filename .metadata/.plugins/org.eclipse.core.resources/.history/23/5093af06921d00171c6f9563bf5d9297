@@ -1,0 +1,10 @@
+package uoa.compsys302.project;
+
+public class MainMenuController {
+	private MasterViewsController masterViewsController;
+	
+	public MainMenuController(MasterViewsController masterViewsController){
+		
+	}
+
+}

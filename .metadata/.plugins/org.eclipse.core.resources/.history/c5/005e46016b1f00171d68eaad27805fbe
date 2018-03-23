@@ -1,0 +1,10 @@
+package uoa.compsys302.project.view;
+
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class MultiplayerSetupView {
+	public MultiplayerSetupView(Scene multiplayerSetupScene, Stage stage){
+		stage.setScene(multiplayerSetupScene);
+	}
+}

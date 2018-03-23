@@ -1,0 +1,122 @@
+package uoa.compsys302.project;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Border;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.Font;
+
+public class MainMenuController {
+	private MasterViewsController masterViewsController;
+	private Group root;
+	private Scene menuScene;
+	private int buttonIndex;
+	
+	public MainMenuController(MasterViewsController masterViewsController){
+		this.masterViewsController = masterViewsController;
+		buttonIndex = 0;
+	}
+	
+	public Scene initialise(int width, int height) {
+		root = new Group();
+		Image img = new Image("file:src/Images/start_screen.png");
+		
+		menuScene = new Scene(root, width, height, new ImagePattern(img));
+		
+		Button singlePlayerButton = new Button();
+		singlePlayerButton.setText("Single Player");
+		singlePlayerButton.setLayoutX(362);
+		singlePlayerButton.setLayoutY(350);
+		singlePlayerButton.setMinWidth(300);
+		singlePlayerButton.setMinHeight(50);
+		singlePlayerButton.setFont(Font.font("Verdana", 20));
+		//singlePlayerButton.setDefaultButton(true);
+		singlePlayerButton.setOnAction(e -> {       
+			masterViewsController.goToLevelsProgressScene(masterViewsController, 1);
+		});
+        //singlePlayerButton.setOnAction(new EventHandler<ActionEvent>() {
+            //@Override
+            //public void handle(ActionEvent event) {
+            	//masterViewsController.goToLevelsProgressScene(masterViewsController, 1);
+            //}
+        //});
+        //singlePlayerButton.setTextFill(Color.GREEN);
+        //singlePlayerButton.set
+        
+        root.getChildren().add(singlePlayerButton);
+        
+        Button multiPlayerButton = new Button();
+        multiPlayerButton.setText("Multiplayer");
+        multiPlayerButton.setLayoutX(362);
+        multiPlayerButton.setLayoutY(450);
+        multiPlayerButton.setMinWidth(300);
+        multiPlayerButton.setMinHeight(50);
+        multiPlayerButton.setFont(Font.font("Verdana", 20));
+		
+        multiPlayerButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	//masterViewsController.goToLevelsProgressScene(masterViewsController, 1);
+            }
+        });
+        
+        root.getChildren().add(multiPlayerButton);
+        
+        Button instructionsButton = new Button();
+        instructionsButton.setText("Instructions");
+        instructionsButton.setLayoutX(362);
+        instructionsButton.setLayoutY(550);
+        instructionsButton.setMinWidth(300);
+        instructionsButton.setMinHeight(50);
+        instructionsButton.setFont(Font.font("Verdana", 20));
+		
+        instructionsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	//masterViewsController.goToLevelsProgressScene(masterViewsController, 1);
+            }
+        });
+        
+        root.getChildren().add(instructionsButton);
+        
+        Button creditsButton = new Button();
+        creditsButton.setText("Credits");
+        creditsButton.setLayoutX(362);
+        creditsButton.setLayoutY(650);
+        creditsButton.setMinWidth(300);
+        creditsButton.setMinHeight(50);
+        creditsButton.setFont(Font.font("Verdana", 20));
+		
+        creditsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	//masterViewsController.goToLevelsProgressScene(masterViewsController, 1);
+            }
+        });
+        
+        root.getChildren().add(creditsButton);
+        
+        menuScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+		    @Override
+		    public void handle(KeyEvent ke) {
+		        if (ke.getCode() == KeyCode.UP) {		        	
+											
+		        } else if (ke.getCode() == KeyCode.DOWN) {		        	
+												
+		        } else if (ke.getCode() == KeyCode.ENTER) {
+		        							
+		        } 
+		    }
+		});
+		
+		return menuScene;
+	}
+
+}
