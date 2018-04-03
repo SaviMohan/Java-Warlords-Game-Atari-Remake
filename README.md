@@ -8,7 +8,7 @@ This repository holds our Java game
 
 
 INSTRUCTIONS
-- First clone/download this repo from bitbucket
+- First clone/download this repo 
 - Next open up the Terminal in linux and go to the "group14Game" folder within the downloaded repo
 - if you want to run the game, run the command "gradle run" 
 - if something goes wrong first run the command "gradle clean" to delete the build folder, then run the command "gradle run"
